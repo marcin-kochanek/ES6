@@ -72,7 +72,7 @@ for (let j = 0; j < 5; j++) { // zmienna 'j' jest nową zmienną w bloku
 console.log(j);
 */
 
-/* -- 4 -- */
+/* -- 4 --
 
 // ES5
 console.log(aVar);  // undefined -> jest dostępna z zainicjalizowaną wartością 'undefined'
@@ -91,3 +91,4 @@ let aLet;
 console.log(aLet); // undefined -> jest dostępna z zainicjalizowaną wartością 'undefined'
 aLet = 10;
 console.log(aLet); // 10
+*/
