@@ -74,40 +74,31 @@ function reportParks(parksArray) {
     console.log('-----PARKS REPORT-----');
     
     // Tree density of each park in the town
-    parksArray.forEach(current => current.treeDensity();
+    parksArray.forEach(current => current.treeDensity());
                        
-    for (let current of parksArray) {
-        // The name of the park that has more than 1000 trees
-        if (current.trees > 1000) {
-            console.log(`Moreover, this park (${current.name}) has more than 1000 trees.`);
-        }
-    }
+    // The name of the park that has more than 1000 trees
+    const index = parksArray.map(current => current.trees).findIndex(current => current > 1000);
+    console.log(`Moreover, this park (${parksArray[index].name}) has more than 1000 trees.`);
     
-    // An average age of all parks
-    let sum = 0;
-    const ages = Array.from(parksArray, current => new Date().getFullYear() - current.yearBuilt);
-        
-    for (let currentAge of ages) {
-        sum = currentAge + sum;
-    }
-    console.log(`Our all ${ages.length} parks have an average age of ${(sum/(ages.length)).toFixed(2)} years.`);
+    // An average age of each town's park
+    const ages = parksArray.map(current => new Date().getFullYear() - current.yearBuilt);
+    const sum = ages.reduce((total, current) => total + current);
+    const averageAge = (sum/(ages.length)).toFixed(2);
+    
+    console.log(`Our all ${ages.length} parks have an average age of ${averageAge} years.`);
 }
 
 function reportStreets(streetsArray) {
     console.log('-----STREETS REPORT-----');
     
     // Size classification of all streets
-    for (let current of streetsArray) {
-        current.classifyStreetSize();
-    }
+    streetsArray.forEach(current => current.classifyStreetSize());
     
     // Total and average length of the town's streets
-    let sum = 0;
-    
-    for (let currentLength of streetsArray) {
-        sum = currentLength.length + sum;
-    }
-    console.log(`Our ${streetsArray.length} streets have a total length of ${sum.toFixed(2)} km, with an average of ${(sum/streetsArray.length).toFixed(2)} km.`);
+    const sum = streetsArray.map(current => current.length).reduce((current, total) => current + total);
+    const averageLength = (sum/streetsArray.length).toFixed(2)
+ 
+    console.log(`Our ${streetsArray.length} streets have a total length of ${sum.toFixed(2)} km, with an average of ${averageLength} km.`);
 }
 
 reportParks(allParks);

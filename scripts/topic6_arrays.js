@@ -47,9 +47,7 @@ for (const current of boxesArr6) {
     }
 }
 
-
 ///// //////
-
 // ES5
 var ages = [13, 22, 14, 17, 10, 9, 2];
 
